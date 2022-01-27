@@ -1,1 +1,3 @@
 datastore/*.db
+main copy.py
+env/*
