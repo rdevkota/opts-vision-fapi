@@ -15,3 +15,4 @@ Werkzeug==0.16.0
 flask_marshmallow
 yfinance
 flask-apscheduler
+Gunicorn

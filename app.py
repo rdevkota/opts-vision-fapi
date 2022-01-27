@@ -12,6 +12,7 @@ scheduler = APScheduler()
 
 def dislpay_job_info():
    print('interval job')
+   
    for job in scheduler.get_jobs():
         print("name: %s, trigger: %s, next run: %s, handler: %s" % (
           job.name, job.trigger, job.next_run_time, job.func))
