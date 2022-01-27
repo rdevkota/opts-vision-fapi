@@ -18,7 +18,6 @@ def dislpay_job_info():
 
 async def scheduleDataImportCronJob():
     from util import load_data
-    job = scheduler.get_job(id="yfinace-job-test")
     load_data()
     
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///datastore/ov_daily_data.db'
