@@ -67,7 +67,7 @@ migrate = Migrate(app, db)
 
 @app.route('/', methods = ['GET'])
 def HomePage():
-    return 'Welcome to API Homepage.. '
+    return 'Welcome to API Homepage.. Will have some dashboard here soon .. '
 
 @app.route('/api/get-all-data', methods = ['GET'])
 def GetListResource():
