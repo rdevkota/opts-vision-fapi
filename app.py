@@ -8,6 +8,7 @@ from flask_apscheduler import APScheduler
 from matplotlib.axis import Ticker
 from sqlalchemy import false, true
 import numpy as np
+import json
 
 app = Flask(__name__)
 scheduler = APScheduler()
@@ -82,8 +83,10 @@ def PostApiResource():
         start_date = content['start']
         end_date = content['end']
         from api import get_historic_data
-        data = get_historic_data(ticker=tick, start=start_date, end=end_date).to_json(orient='records')
-        return data
+        data = get_historic_data(ticker=tick, start=start_date, end=end_date)
+
+        return  data.assign( **data.select_dtypes(['datetime']).astype(str).to_dict('list') ).to_json(orient="records")
+
 
 @app.route('/api/data', methods = ['POST'])
 def PostTickerResource():
