@@ -35,17 +35,25 @@ curl http://localhost:5000/api/data -X POST  -H "Content-Type: application/json"
 
 curl http://localhost:5000/admin/load-data?ticker=FB
 drop table daily_history;
-CREATE TABLE daily_history (
-	id serial PRIMARY KEY,
-	ticker VARCHAR( 255 ),
-	"date" VARCHAR ( 255 ),
-	open VARCHAR ( 255 ),
-	high VARCHAR ( 255 ),
-	low VARCHAR ( 255 ),
-	close VARCHAR ( 255 ),
-	adj_close VARCHAR ( 255 ),
-	volume VARCHAR ( 255 )
+
+-- public.daily_history definition
+
+-- Drop table
+
+-- DROP TABLE public.daily_history;
+
+CREATE TABLE public.daily_history (
+	"Date" timestamp NOT NULL,
+	"Open" float8 NULL,
+	"High" float8 NULL,
+	"Low" float8 NULL,
+	"Close" float8 NULL,
+	"Adj Close" float8 NULL,
+	"Volume" int8 NULL,
+	"Ticker" text NOT NULL,
+	CONSTRAINT daily_history_un UNIQUE ("Date", "Ticker")
 );
+CREATE INDEX "ix_daily_history_Date" ON public.daily_history USING btree ("Date");
 
 select * from daily_history;
 
@@ -67,4 +75,10 @@ heroku pg:credentials:url DATABASE --app opts-vision-fapi
    postgres://fuzjujlciewljd:c25a57adb7262edbda0b3b1e099b121e1aeb61dca383690d47fcb2d99e5b1657@ec2-50-19-171-158.compute-1.amazonaws.com:5432/d42qtgtj7u9mrh
 
 
-curl https://opts-vision-fapi.herokuapp.com/api/data -X POST  -H "Content-Type: application/json" --data '{"ticker": "AMD", "start": "2022/01/25", "end": "2022/01/31"}'
+curl https://opts-vision-fapi.herokuapp.com/api/data -X POST  -H "Content-Type: application/json" --data '{"ticker": "FB", "start": "2022/01/25", "end": "2022/01/31"}'
+
+curl https://opts-vision-fapi.herokuapp.com/api/real-time-data -X POST  -H "Content-Type: application/json" --data '{"ticker": "FB", "start": "2022/01/25", "end": "2022/01/31"}'
+
+curl http://localhost:5000/api/real-time-data -X POST  -H "Content-Type: application/json" --data '{"ticker": "FB", "start": "2022-01-25", "end": "2022-01-31"}'
+
+curl https://opts-vision-fapi.herokuapp.com/admin/load-data?ticker=FB

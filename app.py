@@ -74,6 +74,17 @@ def GetListResource():
     from database import get_all_records
     return get_all_records().to_json()
 
+@app.route('/api/real-time-data', methods = ['POST'])
+def PostApiResource():
+    if request.method == 'POST':
+        content = request.get_json('content')
+        tick = content["ticker"]
+        start_date = content['start']
+        end_date = content['end']
+        from api import get_historic_data
+        data = get_historic_data(ticker=tick, start=start_date, end=end_date).to_json(orient='records')
+        return data
+
 @app.route('/api/data', methods = ['POST'])
 def PostTickerResource():
     if request.method == 'POST':
