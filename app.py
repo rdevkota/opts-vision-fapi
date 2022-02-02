@@ -37,21 +37,21 @@ app.config['JOBS'] = [
     #     "day": "*",
     #     "timezone": "EST"
     # },
+    # {
+    #     "id": "yfinace-job-9AM", 
+    #     "func": scheduleDataImportCronJob, 
+    #     "trigger": "cron", 
+    #     "hour": "09",
+    #     "minute": "00",
+    #     "day": "*",
+    #     "timezone": "EST"
+    # },
     {
-        "id": "yfinace-job-9AM", 
+        "id": "yfinace-job-midnight", 
         "func": scheduleDataImportCronJob, 
         "trigger": "cron", 
-        "hour": "09",
-        "minute": "00",
-        "day": "*",
-        "timezone": "EST"
-    },
-    {
-        "id": "yfinace-job-4PM", 
-        "func": scheduleDataImportCronJob, 
-        "trigger": "cron", 
-        "hour": "00",
-        "minute": "04",
+        "hour": "21",
+        "minute": "30",
         "day": "*",
         "timezone": "EST"
     }
