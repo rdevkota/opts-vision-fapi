@@ -3,7 +3,8 @@ import pandas as pd
 from sqlalchemy import create_engine
 from datetime import date, datetime
 
-tickers = ['FB', 'AMZN', 'NDX', 'SPX', 'SPY', 'COIN', 'AAPL', 'TSLA']
+tickers = ['AMZN']
+#['FB', 'AMZN', 'NDX', 'SPX', 'SPY', 'COIN', 'AAPL', 'TSLA']
 
 def get_historic_data_max(ticker):
   print("get_historic_data_max call for: " + ticker)

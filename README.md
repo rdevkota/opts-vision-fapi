@@ -65,3 +65,6 @@ heroku config | grep HEROKU_POSTGRESQL
 
 heroku pg:credentials:url DATABASE --app opts-vision-fapi
    postgres://fuzjujlciewljd:c25a57adb7262edbda0b3b1e099b121e1aeb61dca383690d47fcb2d99e5b1657@ec2-50-19-171-158.compute-1.amazonaws.com:5432/d42qtgtj7u9mrh
+
+
+curl https://opts-vision-fapi.herokuapp.com/api/data -X POST  -H "Content-Type: application/json" --data '{"ticker": "AMD", "start": "2022/01/25", "end": "2022/01/31"}'
