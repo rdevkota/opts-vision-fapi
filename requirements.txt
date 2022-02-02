@@ -18,3 +18,4 @@ flask-apscheduler
 Gunicorn
 psycopg2-binary
 marshmallow-sqlalchemy==0.22.3
+matplotlib

@@ -65,6 +65,10 @@ api = Api(app)
 from flask_migrate import Migrate
 migrate = Migrate(app, db)
 
+@app.route('/', methods = ['GET'])
+def HomePage():
+    return 'Welcome to API Homepage.. '
+
 @app.route('/api/get-all-data', methods = ['GET'])
 def GetListResource():
     from database import get_all_records
